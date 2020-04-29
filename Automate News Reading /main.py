@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import redis
+import datetime
 
 
 class Scraper():
@@ -33,4 +34,9 @@ class Scraper():
         r.flushdb()
 
 
-s = Scraper(['dataset'])
+s = Scraper(['data science', 'machine learning',
+             'machines', 'Covid-19', 'novel'])
+s.parse()
+s.store()
+if datetime.time.hour == 13:
+    s.email()
